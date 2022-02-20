@@ -1,10 +1,15 @@
 @extends('layouts.plantillabase');      <!-- Uso plantillabase como contenedor -->
 
+@section('css')
+
+<link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+@endsection
+
 @section('contenido')                   <!-- inserto todo lo siguiente dentro de la sección CONTENIDO en plantillabase -->
-    <a href="articulos/create" class="btn btn-primary">CREAR</a>
-    <br>
-    <table class="table table-dark table-striped mt-4">
-        <thead>
+    <a href="articulos/create" class="btn btn-primary mb-4">CREAR</a>
+    <table id="articulos" class="table table-striped shadow-lg" style="width:100%">
+        <thead class="bg-primary text-white">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Código</th>
@@ -34,4 +39,30 @@
             @endforeach
         </tbody>
     </table>
+    @section('js')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#articulos').DataTable({
+                "lengthMenu": [[5,10,50,-1],[5,10,50,"Todos"]],
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontaron registros.",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros",
+                    "infoFiltered": "(filtrado de _MAX_ registros)",
+                    "search":"Buscar",
+                    "paginate":{
+                        "next":"Siguiente",
+                        "previous":"Anterior"
+                    }
+                }               
+            });
+        } );
+    </script>
+    @endsection
+
 @endsection

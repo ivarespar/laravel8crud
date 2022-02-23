@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::resource('articulos','App\Http\Controllers\ArticuloController');     // defino que la ruta articulo llama al controlador ArticuloController y sus métodos

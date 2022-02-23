@@ -1,13 +1,13 @@
-@extends('layouts.plantillabase');      <!-- Uso plantillabase como contenedor -->
+@extends('adminlte::page')
 
-@section('css')
+@section('title', 'CRUD Laravel 8')
 
-<link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+@section('content_header')
+    <h1>Lista de artículos</h1>
+@stop
 
-@endsection
-
-@section('contenido')                   <!-- inserto todo lo siguiente dentro de la sección CONTENIDO en plantillabase -->
-    <a href="articulos/create" class="btn btn-primary mb-4">CREAR</a>
+@section('content')
+<a href="articulos/create" class="btn btn-primary mb-4">CREAR</a>
     <table id="articulos" class="table table-striped shadow-lg" style="width:100%">
         <thead class="bg-primary text-white">
             <tr>
@@ -39,8 +39,15 @@
             @endforeach
         </tbody>
     </table>
-    @section('js')
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+@stop
+
+@section('js')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 
@@ -63,6 +70,4 @@
             });
         } );
     </script>
-    @endsection
-
-@endsection
+@stop
